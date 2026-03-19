@@ -124,20 +124,20 @@ const LeadershipProcess = () => {
 };
 
 const SkillBadge = ({ text }) => (
-  <span className="px-2 py-1 bg-slate-200 text-slate-700 rounded text-xs font-mono border border-slate-300">
+  <span className="px-2 py-1 bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded text-xs font-mono border border-slate-300 dark:border-slate-600">
     {text}
   </span>
 );
 
 const Header = () => (  
-  <header className="mb-4 flex items-end justify-center gap-7">
+  <header className="mb-4 flex flex-col md:flex-row items-center md:items-end justify-center gap-4 md:gap-7">
     {/* Text Content */}
     <div className="text-center">
-      <h1 className="text-5xl font-bold tracking-tight text-slate-900 mb-1">
+      <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-900 mb-1">
         Ajin Gopi
       </h1>
-      <p className="text-sm text-blue-600 font-semibold uppercase tracking-widest mb-4">Frontend Architect</p>
-      <div className="flex flex-wrap justify-center gap-4 text-xs text-slate-600 font-mono">
+      <p className="text-xs md:text-sm text-blue-600 font-semibold uppercase tracking-widest mb-4">Frontend Architect</p>
+      <div className="flex flex-wrap justify-center gap-2 md:gap-4 text-xs text-slate-600 font-mono">
         <a href="mailto:ajingopi@gmail.com" className="hover:text-blue-600 transition-colors">ajingopi@gmail.com</a>
         <span className="text-slate-400">•</span>
         <a href="https://linkedin.com/in/ajingopi" className="hover:text-blue-600 transition-colors" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -148,27 +148,27 @@ const Header = () => (
     </div>
     
     {/* Profile Picture with Icons */}
-    <div className="flex items-center gap-4">
+    <div className="flex flex-col md:flex-row md:items-center items-center gap-2 md:gap-4">
       <img 
         src={profilePic} 
         alt="Ajin Gopi" 
-        className="w-30 h-30 rounded-full border-0 object-contain"
+        className="w-20 h-20 md:w-30 md:h-30 rounded-full border-0 object-contain"
       />
       {/* Technology Icons */}
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-row md:flex-col gap-2 md:gap-3">
         {/* React Icon */}
-        <div className="w-7 h-7 flex items-center justify-center">
-          <SiReact className="w-7 h-7 text-blue-600" />
+        <div className="w-5 h-5 md:w-7 md:h-7 flex items-center justify-center">
+          <SiReact className="w-5 h-5 md:w-7 md:h-7 text-blue-600" />
         </div>
         
         {/* Angular Icon */}
-        <div className="w-7 h-7 flex items-center justify-center">
-          <SiAngular className="w-7 h-7 text-red-600" />
+        <div className="w-5 h-5 md:w-7 md:h-7 flex items-center justify-center">
+          <SiAngular className="w-5 h-5 md:w-7 md:h-7 text-red-600" />
         </div>
         
         {/* Vue Icon */}
-        <div className="w-7 h-7 flex items-center justify-center">
-          <BiLogoVuejs className="w-7 h-7 text-green-600" />
+        <div className="w-5 h-5 md:w-7 md:h-7 flex items-center justify-center">
+          <BiLogoVuejs className="w-5 h-5 md:w-7 md:h-7 text-green-600" />
         </div>
       </div>
     </div>
@@ -177,20 +177,20 @@ const Header = () => (
 
 const TechnicalStack = () => (
   <section className="mb-4 grid md:grid-cols-3 gap-7 py-7">
-    <div className="text-center border border-slate-300 rounded-lg p-6 bg-white hover:shadow-md transition-shadow">
-      <h3 className="text-xs uppercase tracking-widest text-blue-600 font-bold mb-3">Core Frameworks</h3>
+    <div className="text-center border border-slate-300 dark:border-slate-700 rounded-lg p-6 bg-white dark:bg-slate-800 hover:shadow-md transition-shadow">
+      <h3 className="text-xs uppercase tracking-widest text-blue-600 dark:text-blue-400 font-bold mb-3">Core Frameworks</h3>
       <div className="flex flex-wrap gap-2 justify-center">
         {["React", "Vue 2", "Angular", "TypeScript", "Next.js", "Nuxt", "Vite"].map(s => <SkillBadge key={s} text={s} />)}
       </div>
     </div>
-    <div className="text-center border border-slate-300 rounded-lg p-6 bg-white hover:shadow-md transition-shadow">
-      <h3 className="text-xs uppercase tracking-widest text-blue-600 font-bold mb-3">UI & Design</h3>
+    <div className="text-center border border-slate-300 dark:border-slate-700 rounded-lg p-6 bg-white dark:bg-slate-800 hover:shadow-md transition-shadow">
+      <h3 className="text-xs uppercase tracking-widest text-blue-600 dark:text-blue-400 font-bold mb-3">UI & Design</h3>
       <div className="flex flex-wrap gap-2 justify-center">
         {["Bootstrap", "Tailwind CSS", "MUI", "Shadcn UI", "Radix UI", "Figma"].map(s => <SkillBadge key={s} text={s} />)}
       </div>
     </div>
-    <div className="text-center border border-slate-300 rounded-lg p-6 bg-white hover:shadow-md transition-shadow">
-      <h3 className="text-xs uppercase tracking-widest text-blue-600 font-bold mb-3">Engineering</h3>
+    <div className="text-center border border-slate-300 dark:border-slate-700 rounded-lg p-6 bg-white dark:bg-slate-800 hover:shadow-md transition-shadow">
+      <h3 className="text-xs uppercase tracking-widest text-blue-600 dark:text-blue-400 font-bold mb-3">Engineering</h3>
       <div className="flex flex-wrap gap-2 justify-center">
         {["Kanban", "JIRA", "Git", "GitHub", "Browserstack", "Ubuntu"].map(s => <SkillBadge key={s} text={s} />)}
       </div>
@@ -200,8 +200,8 @@ const TechnicalStack = () => (
 
 const ProfileSection = () => (
   <section className="mt-4 mb-12">
-    <div className="mx-auto text-left border border-slate-300 rounded-lg p-6 bg-white hover:shadow-md transition-shadow">
-      <ul className="space-y-4 text-base leading-relaxed text-slate-700">
+    <div className="mx-auto text-left border border-slate-300 dark:border-slate-700 rounded-lg p-6 bg-white dark:bg-slate-800 hover:shadow-md transition-shadow">
+      <ul className="space-y-4 text-base leading-relaxed text-slate-700 dark:text-slate-300">
         <li className="flex items-start">
           <span className="text-blue-600 mr-3 mt-1">•</span>
           <span>Strategic Frontend Architect with over a decade of experience bridging the gap between complex client requirements and high-performance technical execution.</span>
@@ -229,7 +229,7 @@ const ProfileSection = () => (
 
 export default function Portfolio() {
   return (
-    <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-blue-500/30">
+    <div className="min-h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-sans selection:bg-blue-500/30">
       <div className="max-w-4xl mx-auto px-6 py-8">
         
         {/* Header - With Profile Picture */}
@@ -255,23 +255,23 @@ export default function Portfolio() {
       </div>
           <div className="space-y-6">
             {projects.map((p, i) => (
-              <div key={i} className="group border border-slate-300 rounded-lg p-5 hover:border-blue-400 hover:shadow-md transition-all">
+              <div key={i} className="group border border-slate-300 dark:border-slate-700 rounded-lg p-5 hover:border-blue-400 hover:shadow-md transition-all dark:bg-slate-800">
                 <div className="mb-3">
-                  <h3 className="text-lg font-semibold text-slate-900 mb-1 group-hover:text-blue-600 transition-colors text-left">
+                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-1 group-hover:text-blue-600 transition-colors text-left">
                     {p.title}
                   </h3>
                   <div className="flex flex-wrap items-center gap-2 text-xs">
-                    <span className="font-semibold text-slate-700">{p.company}</span>
-                    <span className="text-slate-400">•</span>
-                    <span className="text-slate-600">{p.role}</span>
+                    <span className="font-semibold text-slate-700 dark:text-slate-300">{p.company}</span>
+                    <span className="text-slate-400 dark:text-slate-500">•</span>
+                    <span className="text-slate-600 dark:text-slate-400">{p.role}</span>
                   </div>
                 </div>
-                <p className="text-sm text-left text-slate-700 mb-3 leading-relaxed">
+                <p className="text-sm text-left text-slate-700 dark:text-slate-300 mb-3 leading-relaxed">
                   {p.desc}
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {p.stack.map(s => (
-                    <span key={s} className="text-[11px] text-slate-700 bg-slate-100 px-2 py-1 rounded font-medium">
+                    <span key={s} className="text-[11px] text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded font-medium">
                       {s}
                     </span>
                   ))}
