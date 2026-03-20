@@ -1,16 +1,21 @@
 import profilePic from './assets/profile.png';
 import { SiAngular, SiReact } from "react-icons/si";
+import { SlGlobe } from "react-icons/sl";
 import { BiLogoVuejs } from "react-icons/bi";
+
 import { 
   Users, 
   ShieldCheck, 
   Target, 
-  Zap, 
   MessageSquare, 
-  Search 
+  Search,
+  Globe2,
+  GraduationCap,
+  Languages,
+  Database,
+  Zap
 } from 'lucide-react';
 import { useState } from 'react';
-
 
 const translations = {
   EN: {
@@ -18,8 +23,20 @@ const translations = {
     coreFrameworks: "Core Frameworks",
     uiDesign: "UI & Design",
     engineering: "Engineering",
+    backendTitle: "Technical Versatility & Full-Stack Context",
+    backendDesc: "In addition to my core focus on Frontend Architecture, I have professional experience handling backend tasks across various projects. I am comfortable working with server-side logic and databases, and I am ready to leverage these skills for full-stack opportunities as they arise.",
     leadershipTitle: "Leadership & Architectural Process",
     leadershipDesc: "From hands-on development to technical leadership—I focus on building robust engineering cultures and delivering high-quality web applications.",
+    communicationTitle: "Communication",
+    communicationDesc: "Leveraging native-level English for global leadership while actively integrating into the German professional landscape.",
+    englishTitle: "English",
+    englishTag: "Proficient in English",
+    englishSkill1: "Advanced Reading, Writing & Speaking",
+    englishSkill2: "Direct Stakeholder & Client Collaboration",
+    deutschTitle: "Deutsch",
+    deutschTag: "A1 CERTIFIED",
+    deutschCert: "Goethe-Zertifikat A1",
+    deutschCourse: "Integration Course @ VHS Dresden",
     pillars: [
       {
         icon: Zap,
@@ -104,8 +121,20 @@ const translations = {
     coreFrameworks: "Kern-Frameworks",
     uiDesign: "UI & Design",
     engineering: "Ingenieurwesen",
+    backendTitle: "Technische Vielseitigkeit & Full-Stack-Kontext",
+    backendDesc: "Zusätzlich zu meinem Kernfokus auf Frontend-Architektur habe ich berufliche Erfahrung in der Bearbeitung von Backend-Aufgaben in verschiedenen Projekten. Ich bin komfortabel mit serverseitiger Logik und Datenbanken und bin bereit, diese Fähigkeiten für Full-Stack-Möglichkeiten zu nutzen.",
     leadershipTitle: "Führung & Architekturprozess",
     leadershipDesc: "Von der praktischen Entwicklung zur technischen Führung – ich konzentriere mich auf den Aufbau robuster Engineering-Kulturen und die Bereitstellung hochwertiger Webanwendungen.",
+    communicationTitle: "Kommunikation",
+    communicationDesc: "Meine native englische Sprachkompetenz für globale Führung nutzen, während ich mich aktiv in die deutsche Fachlandschaft integriere.",
+    englishTitle: "Englisch",
+    englishTag: "Fortgeschrittene Englischkenntnisse",
+    englishSkill1: "Fortgeschrittene Text-, Schreib- und Sprachfertigkeit",
+    englishSkill2: "Direkte Zusammenarbeit mit Stakeholdern & Kunden",
+    deutschTitle: "Deutsch",
+    deutschTag: "A1 ZERTIFIZIERT",
+    deutschCert: "Goethe-Zertifikat A1",
+    deutschCourse: "Integrationskurs @ VHS Dresden",
     pillars: [
       {
         icon: Zap,
@@ -208,6 +237,121 @@ const ProcessCard = ({ icon: Icon, title, description, tools }) => (
   </div>
 );
 
+const LanguageStatus = ({ lang }) => {
+  const t = translations[lang];
+  return (
+    <section className="mt-4 mb-12">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4 flex items-center justify-center gap-2">
+          <Languages size={24} /> {t.communicationTitle}
+        </h2>
+        <p className="text-slate-600 dark:text-slate-400 mx-auto px-8">
+          {t.communicationDesc}
+        </p>
+      </div>
+      <div className="border border-slate-300 dark:border-slate-700 rounded-lg p-6 bg-white dark:bg-slate-800 hover:shadow-md transition-shadow">
+        <div className="flex flex-wrap gap-4 w-full md:w-auto justify-center">
+          
+          {/* English - Professional */}
+          <div className="flex-1 min-w-[200px] p-5 bg-white dark:bg-slate-800 dark:border-slate-700 rounded-lg hover:shadow-md transition-shadow">
+            <div className="flex justify-between items-start mb-4">
+              <span className="text-2xl font-light text-slate-900 dark:text-white">{t.englishTitle}</span>
+              <span className="text-[10px] font-mono text-blue-400 bg-blue-400/10 px-2 py-0.5 rounded">{t.englishTag}</span>
+            </div>
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 text-[11px] text-slate-600 dark:text-slate-300">
+                <div className="text-slate-500 group-hover:text-blue-400 transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                </div>
+                <span>{t.englishSkill1}</span>
+              </div>
+              <div className="flex items-center gap-2 text-[11px] text-slate-600 dark:text-slate-300">
+                <div className="text-slate-500 group-hover:text-blue-400 transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4 v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <span>{t.englishSkill2}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* German - Strategic Learning */}
+          <div className="flex-1 min-w-[200px] p-5 bg-white dark:bg-slate-800 dark:border-slate-700 rounded-lg hover:shadow-md transition-shadow">
+            <div className="flex justify-between items-start mb-4">
+              <span className="text-2xl font-light text-slate-900 dark:text-white">{t.deutschTitle}</span>
+              <span className="text-[10px] font-mono text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded">{t.deutschTag}</span>
+            </div>
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 text-[11px] text-slate-600 dark:text-slate-300">
+                <GraduationCap size={12} className="text-slate-500" />
+                <span>{t.deutschCert}</span>
+              </div>
+              <div className="flex items-center gap-2 text-[11px] text-slate-600 dark:text-slate-300">
+                <Globe2 size={12} className="text-slate-500" />
+                <span>{t.deutschCourse}</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const BackendContext = ({ lang }) => {
+  const t = translations[lang];
+  return (
+    <section className="mt-4 mb-12">
+      <div className="text-center mb-12">
+        <h2 className="text-2xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4 flex items-center justify-center gap-2 flex-wrap">
+          <Database size={24} className="flex-shrink-0" /> <span>{t.backendTitle}</span>
+        </h2>
+        <p className="text-slate-600 dark:text-slate-400 mx-auto px-8">
+          {t.backendDesc}
+        </p>
+      </div>
+      <div className="flex flex-wrap gap-4 w-full md:w-auto justify-center">
+          
+          {/* Past Experience - Left Side */}
+          <div className="flex-1 min-w-[200px] p-5 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+            <div className="space-y-3">
+              <div className="flex items-center gap-2 text-[11px] text-slate-600 dark:text-slate-300">
+                <Zap size={12} className="text-amber-500" />
+                <span>Python / PHP</span>
+              </div>
+              <div className="flex items-center gap-2 text-[11px] text-slate-600 dark:text-slate-300">
+                <Zap size={12} className="text-green-500" />
+                <span>Node.js / Express</span>
+              </div>
+              <div className="flex items-center gap-2 text-[11px] text-slate-600 dark:text-slate-300">
+                <Zap size={12} className="text-purple-500" />
+                <span>MongoDB / MySQL</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Future Opportunities - Right Side */}
+          <div className="flex-1 min-w-[200px] p-5 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+            <div className="space-y-3">
+              <div className="flex items-center gap-2 text-[11px] text-slate-600 dark:text-slate-300">
+                <ShieldCheck size={12} className="text-emerald-500" />
+                <span>Monolithic & Microservice Architecture</span>
+              </div>
+              <div className="flex items-center gap-2 text-[11px] text-slate-600 dark:text-slate-300">
+                <MessageSquare size={12} className="text-blue-500" />
+                <span>API Design & Integration</span>
+              </div>
+              <div className="flex items-center gap-2 text-[11px] text-slate-600 dark:text-slate-300">
+                <Target size={12} className="text-orange-500" />
+                <span className="text-emerald-600">Open to Full-Stack Projects</span>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+  );
+}
+
 const LeadershipProcess = ({ lang }) => {
   const t = translations[lang];
   const pillars = t.pillars;
@@ -238,7 +382,7 @@ const SkillBadge = ({ text }) => (
   </span>
 );
 
-const Header = ({ lang }) => (  
+const Header = ({ lang, setLang }) => (  
   <header className="mb-4 flex flex-col md:flex-row items-center md:items-end justify-center gap-4 md:gap-7">
     {/* Text Content */}
     <div className="text-center">
@@ -246,16 +390,26 @@ const Header = ({ lang }) => (
         Ajin Gopi
       </h1>
       <p className="text-xs md:text-sm text-blue-600 font-semibold uppercase tracking-widest mb-4">{translations[lang].role}</p>
-      <div className="flex flex-wrap justify-center gap-2 md:gap-4 text-xs text-slate-600 font-mono">
-        <span>Müllerbrunnenstr. 2, 01187, Dresden</span>        
-      </div>
+      
       <div className="flex flex-wrap justify-center gap-2 md:gap-4 text-xs text-slate-600 font-mono">
         <a href="mailto:ajingopi@gmail.com" className="hover:text-blue-600 transition-colors">ajingopi@gmail.com</a>
         <span className="text-slate-400">•</span>
         <a href="https://linkedin.com/in/ajingopi" className="hover:text-blue-600 transition-colors" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <span className="text-slate-400">•</span>
-        <span>+49-155-10942932</span>        
-        
+        <span>+49-155-10942932</span>
+      </div>
+
+      <div className="flex flex-wrap justify-center items-center text-xs text-slate-600 font-mono">
+        <span>Müllerbrunnenstr. 2, 01187, Dresden</span>
+        <button
+          type="button"
+          onClick={() => setLang(lang === "EN" ? "DE" : "EN")}
+          aria-label="Toggle language"
+          className="inline-flex items-center gap-1 px-2 py-1 font-semibold text-slate-700 dark:text-slate-300 transition hover:text-blue-600 dark:hover:text-blue-900 focus:outline-none focus-visible:none focus-visible:text-blue-600 cursor-pointer"
+        >
+          <SlGlobe className="h-3 w-3" />
+          <span>{lang}</span>
+        </button>
       </div>
     </div>
     
@@ -338,39 +492,17 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-sans selection:bg-blue-500/30">
       <div className="max-w-4xl mx-auto px-6 py-8 relative">
-        {/* Language Switcher */}
-        <div className="flex justify-end px-8 lg:px-16 pt-4 absolute top-0 right-0">
-          <div className="flex items-center gap-1 bg-secondary rounded-full p-1 border border-border">
-            <button
-              type="button"
-              onClick={() => setLang("EN")}
-              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
-                lang === "EN"
-                  ? "bg-primary text-primary-foreground"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              EN
-            </button>
-            <button
-              type="button"
-              onClick={() => setLang("DE")}
-              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
-                lang === "DE"
-                  ? "bg-primary text-primary-foreground"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              DE
-            </button>
-          </div>
-        </div>
+        {/* Language Switcher removed (now in header) */}
 
         {/* Header - With Profile Picture */}
-        <Header lang={lang} />
+        <Header lang={lang} setLang={setLang} />
 
         {/* Technical Stack - Grouped by Architecture */}
         <TechnicalStack lang={lang} />
+
+        <BackendContext lang={lang} />
+
+        <LanguageStatus lang={lang} />
 
         <LeadershipProcess lang={lang} />   
 
