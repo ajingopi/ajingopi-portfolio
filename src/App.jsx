@@ -36,7 +36,7 @@ const translations = {
     deutschTitle: "Deutsch",
     deutschTag: "A1 CERTIFIED",
     deutschCert: "Goethe-Zertifikat A1",
-    deutschCourse: "Integration Course @ VHS Dresden",
+    deutschCourse: "Enrolled in Integration course @ VHS Dresden",
     pillars: [
       {
         icon: Zap,
@@ -128,13 +128,13 @@ const translations = {
     communicationTitle: "Kommunikation",
     communicationDesc: "Meine native englische Sprachkompetenz für globale Führung nutzen, während ich mich aktiv in die deutsche Fachlandschaft integriere.",
     englishTitle: "Englisch",
-    englishTag: "Fortgeschrittene Englischkenntnisse",
+    englishTag: "Verhandlungssicher in Englisch",
     englishSkill1: "Fortgeschrittene Text-, Schreib- und Sprachfertigkeit",
     englishSkill2: "Direkte Zusammenarbeit mit Stakeholdern & Kunden",
     deutschTitle: "Deutsch",
     deutschTag: "A1 ZERTIFIZIERT",
     deutschCert: "Goethe-Zertifikat A1",
-    deutschCourse: "Integrationskurs @ VHS Dresden",
+    deutschCourse: "Eingeschrieben im Integrationskurs @ VHS Dresden",
     pillars: [
       {
         icon: Zap,
@@ -486,7 +486,7 @@ const ProfileSection = ({ lang }) => {
 }
 
 export default function Portfolio() {
-  const [lang, setLang] = useState("EN");
+  const [lang, setLang] = useState("DE");
   const t = translations[lang];
 
   return (
