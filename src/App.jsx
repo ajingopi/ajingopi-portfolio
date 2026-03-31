@@ -2,6 +2,7 @@ import profilePic from './assets/profile.png';
 import { SiAngular, SiReact } from "react-icons/si";
 import { SlGlobe } from "react-icons/sl";
 import { BiLogoVuejs } from "react-icons/bi";
+import { IoMdArrowDropright } from "react-icons/io";
 
 import { 
   Users, 
@@ -13,9 +14,15 @@ import {
   GraduationCap,
   Languages,
   Database,
-  Zap
+  Zap,
+  Download
 } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import ReactGA from 'react-ga4'
+import myCV from './assets/Ajin_Gopi_CV_ATS.pdf'
+import myCV_DE from './assets/Ajin_Gopi_CV_ATS_DE.pdf'
+
+const GA = ReactGA?.default || ReactGA
 
 const translations = {
   EN: {
@@ -216,11 +223,13 @@ const translations = {
   }
 };
 
-const ProcessCard = ({ icon: Icon, title, description, tools }) => (
-  <div className="p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-md transition-shadow">
-    <div className="flex items-center mb-4">
-      <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg mr-3">
-        <Icon className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+const ProcessCard = ({ icon, title, description, tools }) => {
+  const Icon = icon;
+  return (
+    <div className="p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-md transition-shadow">
+      <div className="flex items-center mb-4">
+        <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg mr-3">
+          <Icon className="w-6 h-6 text-blue-600 dark:text-blue-400" />
       </div>
       <h4 className="text-md font-bold text-slate-800 dark:text-white text-left">{title}</h4>
     </div>
@@ -235,7 +244,8 @@ const ProcessCard = ({ icon: Icon, title, description, tools }) => (
       ))}
     </div>
   </div>
-);
+  );
+};
 
 const LanguageStatus = ({ lang }) => {
   const t = translations[lang];
@@ -382,7 +392,7 @@ const SkillBadge = ({ text }) => (
   </span>
 );
 
-const Header = ({ lang, setLang }) => (  
+const Header = ({ lang, setLang, sendGaEvent }) => (  
   <header className="mb-4 flex flex-col md:flex-row items-center md:items-end justify-center gap-4 md:gap-7">
     {/* Text Content */}
     <div className="text-center">
@@ -403,13 +413,29 @@ const Header = ({ lang, setLang }) => (
         <span>Müllerbrunnenstr. 2, 01187, Dresden</span>
         <button
           type="button"
-          onClick={() => setLang(lang === "EN" ? "DE" : "EN")}
+          onClick={() => {
+            const next = lang === "EN" ? "DE" : "EN"
+            setLang(next)
+            sendGaEvent('UI', 'Language Toggle', next)
+          }}
           aria-label="Toggle language"
+          title="Toggle language"
           className="inline-flex items-center gap-1 px-2 py-1 font-semibold text-slate-700 dark:text-slate-300 transition hover:text-blue-600 dark:hover:text-blue-900 focus:outline-none focus-visible:none focus-visible:text-blue-600 cursor-pointer"
         >
-          <SlGlobe className="h-3 w-3" />
+          <SlGlobe className="h-3.5 w-3.5" />
           <span>{lang}</span>
-        </button>
+        </button>        
+        <a
+          href={lang === "DE" ? myCV_DE : myCV}
+          target="_blank"
+          download
+          onClick={() => sendGaEvent('CV', 'Download', `CV ${lang}`)}
+          aria-label={`Download CV (${lang})`}
+          title={`Download CV (${lang})`}
+          className="inline-flex items-center gap-1 py-1 font-semibold text-slate-700 dark:text-slate-300 transition hover:text-blue-600 dark:hover:text-blue-900 focus:outline-none focus-visible:text-blue-600 cursor-pointer"
+        >
+          <Download className="h-3.5 w-3.5" />
+        </a>
       </div>
     </div>
     
@@ -489,13 +515,21 @@ export default function Portfolio() {
   const [lang, setLang] = useState("DE");
   const t = translations[lang];
 
+  useEffect(() => {
+    GA.send({ hitType: 'pageview', page: location.pathname + location.search })
+  }, [])
+
+  const sendGaEvent = (category, action, label) => {
+    GA.event({ category, action, label })
+  }
+
   return (
     <div className="min-h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-sans selection:bg-blue-500/30">
       <div className="max-w-4xl mx-auto px-6 py-8 relative">
         {/* Language Switcher removed (now in header) */}
 
         {/* Header - With Profile Picture */}
-        <Header lang={lang} setLang={setLang} />
+        <Header lang={lang} setLang={setLang} sendGaEvent={sendGaEvent} />
 
         {/* Technical Stack - Grouped by Architecture */}
         <TechnicalStack lang={lang} />
@@ -521,26 +555,37 @@ export default function Portfolio() {
       </div>
           <div className="space-y-6">
             {t.projects.map((p, i) => (
-              <div key={i} className="group border border-slate-300 dark:border-slate-700 rounded-lg p-5 hover:border-blue-400 hover:shadow-md transition-all dark:bg-slate-800">
-                <div className="mb-3">
-                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-1 group-hover:text-blue-600 transition-colors text-left">
-                    {p.title}
-                  </h3>
-                  <div className="flex flex-wrap items-center gap-2 text-xs">
-                    <span className="font-semibold text-slate-700 dark:text-slate-300">{p.company}</span>
-                    <span className="text-slate-400 dark:text-slate-500">•</span>
-                    <span className="text-slate-600 dark:text-slate-400">{p.role}</span>
+              <div
+                key={i}
+                className="group border border-slate-300 dark:border-slate-700 rounded-lg p-5 hover:border-blue-400 hover:shadow-md transition-all dark:bg-slate-800"
+                onClick={() => sendGaEvent('Project', 'Click', p.title)}
+              >
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="md:col-span-2">
+                    <div className="mb-3">
+                      <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-1 group-hover:text-blue-600 transition-colors text-left">
+                        {p.title}
+                      </h3>
+                      <div className="flex flex-wrap items-center gap-2 text-xs">
+                        <span className="font-semibold text-slate-700 dark:text-slate-300">{p.company}</span>
+                        <span className="text-slate-400 dark:text-slate-500">•</span>
+                        <span className="text-slate-600 dark:text-slate-400">{p.role}</span>
+                      </div>
+                    </div>
+                    <p className="text-sm text-left text-slate-700 dark:text-slate-300 leading-relaxed">
+                      {p.desc}
+                    </p>
                   </div>
-                </div>
-                <p className="text-sm text-left text-slate-700 dark:text-slate-300 mb-3 leading-relaxed">
-                  {p.desc}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {p.stack.map(s => (
-                    <span key={s} className="text-[11px] text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded font-medium">
-                      {s}
-                    </span>
-                  ))}
+                  <div>
+                    <div className="space-y-2">
+                      {p.stack.map(s => (
+                        <div key={s} className="flex items-center gap-2">
+                          <IoMdArrowDropright className="w-4 h-4 text-blue-600" />
+                          <span className="font-bold text-sm text-slate-700 dark:text-slate-300">{s}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
