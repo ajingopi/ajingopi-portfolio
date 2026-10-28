@@ -41,9 +41,9 @@ const translations = {
     englishSkill1: "Advanced Reading, Writing & Speaking",
     englishSkill2: "Direct Stakeholder & Client Collaboration",
     deutschTitle: "Deutsch",
-    deutschTag: "A1 CERTIFIED",
-    deutschCert: "Goethe-Zertifikat A1",
-    deutschCourse: "Enrolled in Integration course @ VHS Dresden",
+    deutschTag: "B1 CERTIFIED",
+    deutschCert: "GAST DTZ Certificate B1",
+    deutschCourse: "Completed Integration Course at VHS Dresden",
     pillars: [
       {
         icon: Zap,
@@ -139,9 +139,9 @@ const translations = {
     englishSkill1: "Fortgeschrittene Text-, Schreib- und Sprachfertigkeit",
     englishSkill2: "Direkte Zusammenarbeit mit Stakeholdern & Kunden",
     deutschTitle: "Deutsch",
-    deutschTag: "A1 ZERTIFIZIERT",
-    deutschCert: "Goethe-Zertifikat A1",
-    deutschCourse: "Eingeschrieben im Integrationskurs @ VHS Dresden",
+    deutschTag: "B1 ZERTIFIZIERT",
+    deutschCert: "GAST-DTZ-Zertifikat B1",
+    deutschCourse: "Integrationskurs an der VHS Dresden erfolgreich absolviert",
     pillars: [
       {
         icon: Zap,
@@ -410,7 +410,7 @@ const Header = ({ lang, setLang, sendGaEvent }) => (
       </div>
 
       <div className="flex flex-wrap justify-center items-center text-xs text-slate-600 font-mono">
-        <span>Müllerbrunnenstr. 2, 01187, Dresden</span>
+        <span>Eibenstockerstr. 8, 01309, Dresden</span>
         <button
           type="button"
           onClick={() => {
